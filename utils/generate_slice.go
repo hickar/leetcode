@@ -7,7 +7,7 @@ import (
 )
 
 func NewRangeSlice(start, end int) []int {
-	newSlice := make([]int, end - start)
+	newSlice := make([]int, end-start)
 
 	if start < end {
 		for i := 0; i < end-start; i++ {
@@ -35,7 +35,7 @@ func NewRandomSlice(length, limit int) []int {
 
 func numberOrder(num int) int {
 	order := 0
-	for num / 10 != 0 {
+	for num/10 != 0 {
 		num /= 10
 		order += 1
 	}

@@ -16,7 +16,7 @@ func LengthOfLongestSubstring(s string) int {
 			}
 		} else {
 			repeatCount := 0
-			for key, _ := range charMap {
+			for key := range charMap {
 				delete(charMap, key)
 
 				if key != string(char) {
@@ -27,7 +27,7 @@ func LengthOfLongestSubstring(s string) int {
 					if repeatCount == 1 {
 						break
 					} else {
-						//curLen--
+						// curLen--
 						repeatCount++
 					}
 				}

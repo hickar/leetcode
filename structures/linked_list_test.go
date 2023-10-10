@@ -2,8 +2,10 @@ package structures
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestLinkedListBasic(t *testing.T) {
@@ -46,6 +48,33 @@ func TestLinkedListAsSlice(t *testing.T) {
 
 			actualOutput := list.Slice()
 			assert.Equal(t, tt.expectedOutput, actualOutput)
+		})
+	}
+}
+
+func TestLinkedListLen(t *testing.T) {
+	tests := []struct {
+		list        *ListNode[int]
+		expectedLen int
+	}{
+		{
+			list:        NewLinkedList(1, 2, 3),
+			expectedLen: 3,
+		},
+		{
+			list:        NewLinkedList[int](),
+			expectedLen: 0,
+		},
+		{
+			list:        NewLinkedList(1),
+			expectedLen: 1,
+		},
+	}
+
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("TestLinkedListLen_Case%d", i+1), func(t *testing.T) {
+			actualLen := tt.list.Len()
+			assert.Equal(t, tt.expectedLen, actualLen)
 		})
 	}
 }
@@ -102,6 +131,11 @@ func TestLinkedListContains(t *testing.T) {
 		},
 		{
 			list:          NewLinkedList[int](1, 2, 3),
+			item:          1,
+			shouldContain: true,
+		},
+		{
+			list:          NewLinkedList[int](1, 2, 3),
 			item:          3,
 			shouldContain: true,
 		},
@@ -125,29 +159,29 @@ func TestLinkedListContains(t *testing.T) {
 	}
 }
 
-//func TestLinkedListReverse(t *testing.T) {
-//	tests := []struct {
-//		list     *ListNode[int]
-//		expected []int
-//	}{
-//		{
-//			list:     NewLinkedList(1, 2, 3, 4),
-//			expected: []int{4, 3, 2, 1},
-//		},
-//		{
-//			list:     NewLinkedList(1),
-//			expected: []int{1},
-//		},
-//	}
-//
-//	for i, tt := range tests {
-//		t.Run(fmt.Sprintf("TestLinkedListReverse_Case%d", i+1), func(t *testing.T) {
-//			var actual []int
-//			require.NotPanics(t, func() {
-//				actual = tt.list.Reverse().Slice()
-//			})
-//
-//			assert.Equal(t, tt.expected, actual)
-//		})
-//	}
-//}
+func TestLinkedListReverse(t *testing.T) {
+	tests := []struct {
+		list     *ListNode[int]
+		expected []int
+	}{
+		{
+			list:     NewLinkedList(1, 2, 3, 4),
+			expected: []int{4, 3, 2, 1},
+		},
+		{
+			list:     NewLinkedList(1),
+			expected: []int{1},
+		},
+	}
+
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("TestLinkedListReverse_Case%d", i+1), func(t *testing.T) {
+			var actual []int
+			require.NotPanics(t, func() {
+				actual = tt.list.Reverse().Slice()
+			})
+
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}

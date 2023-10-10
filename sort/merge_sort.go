@@ -1,7 +1,7 @@
 package sort
 
 func merge(left, right []int) []int {
-	result := make([]int, len(left) + len(right))
+	result := make([]int, len(left)+len(right))
 	i, j, k := 0, 0, 0
 
 	for ; i < len(left) && j < len(right); k++ {

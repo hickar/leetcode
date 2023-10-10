@@ -11,7 +11,6 @@ func MyAtoi(s string) int {
 		numbers = 0
 		current = 0
 		sign    = 1
-		isFloat bool
 	)
 
 	s = strings.Trim(s, " ")
@@ -56,7 +55,6 @@ func MyAtoi(s string) int {
 		}
 	}
 
-	isFloat = isFloat
 	return result * sign
 }
 

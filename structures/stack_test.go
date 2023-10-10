@@ -1,8 +1,9 @@
 package structures
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestStack_Basic(t *testing.T) {

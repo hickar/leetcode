@@ -2,8 +2,9 @@ package leetcode
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestRemoveElement(t *testing.T) {

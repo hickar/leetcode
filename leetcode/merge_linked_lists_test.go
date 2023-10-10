@@ -2,9 +2,10 @@ package leetcode
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/Hickar/siaod/structures"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestMergeLinkedLists(t *testing.T) {

@@ -14,7 +14,7 @@ import (
  */
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 

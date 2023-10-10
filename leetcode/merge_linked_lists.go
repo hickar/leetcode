@@ -1,8 +1,9 @@
 package leetcode
 
 import (
-	"github.com/Hickar/siaod/structures"
 	"sort"
+
+	"github.com/Hickar/siaod/structures"
 )
 
 type IntegerSlice []int

@@ -37,9 +37,5 @@ func AreValidParenthesis(str string) bool {
 		}
 	}
 
-	if stack.Len() > 0 {
-		return false
-	}
-
-	return true
+	return stack.Len() == 0
 }

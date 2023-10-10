@@ -6,9 +6,9 @@ func FindMaxSubarray(arr []int, low, high int) (int, int, int) {
 	if low == high {
 		return arr[low], low, high
 	} else {
-		mid := int(math.Floor(float64(low + high) / 2))
+		mid := int(math.Floor(float64(low+high) / 2))
 		leftSum, leftLow, leftHigh := FindMaxSubarray(arr, low, mid)
-		rightSum, rightLow, rightHigh := FindMaxSubarray(arr, mid + 1, high)
+		rightSum, rightLow, rightHigh := FindMaxSubarray(arr, mid+1, high)
 		crossSum, crossLow, crossHigh := FindCrossMaxSubarray(arr, low, mid, high)
 
 		if leftSum > rightSum && leftSum > crossSum {
