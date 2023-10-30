@@ -1,13 +1,29 @@
 package leetcode
 
-import "strconv"
+import (
+	"strings"
+	"unicode"
+)
 
-func IsPalindrome(x int) bool {
-	s := strconv.Itoa(x)
-	length := len(s) - 1
+func IsPalindrome(str string) bool {
+	var sb strings.Builder
+	sb.Grow(len(str))
 
-	for i := 0; i <= length/2; i++ {
-		if s[i] != s[length-i] {
+	for _, c := range str {
+		if !unicode.IsLetter(c) && !unicode.IsDigit(c) {
+			continue
+		}
+
+		if unicode.IsUpper(c) {
+			c = unicode.ToLower(c)
+		}
+
+		sb.WriteRune(c)
+	}
+
+	s := sb.String()
+	for i := 0; i < len(s)/2; i++ {
+		if s[i] != s[len(s)-i-1] {
 			return false
 		}
 	}
