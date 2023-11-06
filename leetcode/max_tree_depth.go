@@ -19,18 +19,10 @@ Output: 2
 
 */
 
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func maxDepth(root *structures.TreeNode[any]) int {
+func MaxDepth(root *structures.TreeNode[any]) int {
 	if root == nil {
 		return 0
 	}
 
-	return 1 + max(maxDepth(root.Left), maxDepth(root.Right))
+	return 1 + max(MaxDepth(root.Left), MaxDepth(root.Right))
 }

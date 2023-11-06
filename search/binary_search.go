@@ -5,11 +5,11 @@ func BinarySearch(arr []int, item int) int {
 }
 
 func binSearch(arr []int, item, low, high int) int {
-	mid := low + (high-low)/2
-
 	if high < low {
 		return -1
 	}
+
+	mid := low + (high-low)/2
 
 	switch {
 	case item > arr[mid]:
