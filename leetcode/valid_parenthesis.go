@@ -1,7 +1,7 @@
 package leetcode
 
 import (
-	"github.com/Hickar/siaod/structures"
+	"github.com/hickar/leetcode/structures"
 )
 
 func AreValidParenthesis(str string) bool {

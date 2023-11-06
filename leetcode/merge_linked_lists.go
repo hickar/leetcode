@@ -3,7 +3,7 @@ package leetcode
 import (
 	"sort"
 
-	"github.com/Hickar/siaod/structures"
+	"github.com/hickar/leetcode/structures"
 )
 
 type IntegerSlice []int

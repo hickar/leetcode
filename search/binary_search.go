@@ -1,21 +1,22 @@
 package search
 
-import "math"
+func BinarySearch(arr []int, item int) int {
+	return binSearch(arr, item, 0, len(arr)-1)
+}
 
-func BinarySearchRecursive(arr []int, item, low, high int) int {
-	mid := int(math.Ceil(float64(low) + (float64(high)-float64(low))/2))
+func binSearch(arr []int, item, low, high int) int {
+	mid := low + (high-low)/2
 
-	if high >= low {
-		if arr[mid] == item {
-			return mid
-		}
-
-		if item > arr[mid] {
-			return BinarySearchRecursive(arr, item, mid+1, high)
-		} else {
-			return BinarySearchRecursive(arr, item, low, mid-1)
-		}
+	if high < low {
+		return -1
 	}
 
-	return -1
+	switch {
+	case item > arr[mid]:
+		return binSearch(arr, item, mid+1, high)
+	case item < arr[mid]:
+		return binSearch(arr, item, low, mid-1)
+	default:
+		return mid
+	}
 }

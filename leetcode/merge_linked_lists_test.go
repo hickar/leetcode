@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/Hickar/siaod/structures"
+	"github.com/hickar/leetcode/structures"
 	"github.com/stretchr/testify/assert"
 )
 
