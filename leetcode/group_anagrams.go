@@ -26,8 +26,10 @@ func GroupAnagrams(strs []string) [][]string {
 	groups := make(map[string]map[string]int)
 
 	for _, word := range strs {
-		tmpSortedWord := runeArray(word)
-		sort.Sort(tmpSortedWord)
+		tmpSortedWord := []rune(word)
+		sort.Slice(tmpSortedWord, func(i, j int) bool {
+			return tmpSortedWord[i] < tmpSortedWord[j]
+		})
 		sortedWord := string(tmpSortedWord)
 
 		_, ok := groups[sortedWord]
@@ -52,18 +54,4 @@ func GroupAnagrams(strs []string) [][]string {
 	}
 
 	return result
-}
-
-type runeArray []rune
-
-func (r runeArray) Len() int {
-	return len(r)
-}
-
-func (r runeArray) Less(i, j int) bool {
-	return r[i] < r[j]
-}
-
-func (r runeArray) Swap(i, j int) {
-	r[i], r[j] = r[j], r[i]
 }
