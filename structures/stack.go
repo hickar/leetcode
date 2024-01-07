@@ -6,7 +6,7 @@ type Stack[T any] struct {
 
 func NewStack[T any]() Stack[T] {
 	return Stack[T]{
-		items: make([]T, 0, 5),
+		items: make([]T, 0, 8),
 	}
 }
 
@@ -24,16 +24,25 @@ func (s *Stack[T]) Push(items ...T) {
 	}
 }
 
-func (s *Stack[T]) Pop() *T {
+func (s *Stack[T]) Pop() T {
 	if len(s.items) == 0 {
-		return nil
+		panic("trying to pop out of zero-sized stack")
 	}
 
 	popItem := s.items[len(s.items)-1]
 	s.items = s.items[:len(s.items)-1]
-	return &popItem
+	return popItem
 }
 
-func (s *Stack[T]) Len() int {
+func (s *Stack[T]) Peek() T {
+	if len(s.items) == 0 {
+		panic("trying to peek out of zero-sized stack")
+	}
+
+	item := s.items[len(s.items)-1]
+	return item
+}
+
+func (s *Stack[T]) Size() int {
 	return len(s.items)
 }
