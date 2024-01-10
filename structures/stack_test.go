@@ -16,7 +16,7 @@ func TestStack_Basic(t *testing.T) {
 
 	poppedItems := make([]int, 0, stack.Size())
 	for stack.Size() > 0 {
-		poppedItems = append(poppedItems, *stack.Pop())
+		poppedItems = append(poppedItems, stack.Pop())
 	}
 
 	assert.Equal(t, []int{3, 2, 1}, poppedItems)
@@ -25,6 +25,7 @@ func TestStack_Basic(t *testing.T) {
 func TestStack_PopZeroLength(t *testing.T) {
 	stack := NewStack[int]()
 
-	popped := stack.Pop()
-	assert.Nil(t, popped)
+	assert.Panics(t, func() {
+		stack.Pop()
+	})
 }

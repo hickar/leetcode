@@ -42,13 +42,13 @@ func FindArrayDifference(nums1 []int, nums2 []int) [][]int {
 	var ok bool
 	var diff1 []int
 	var diff2 []int
-	for num, _ := range numMap1 {
+	for num := range numMap1 {
 		_, ok = numMap2[num]
 		if !ok {
 			diff1 = append(diff1, num)
 		}
 	}
-	for num, _ := range numMap2 {
+	for num := range numMap2 {
 		_, ok = numMap1[num]
 		if !ok {
 			diff2 = append(diff2, num)

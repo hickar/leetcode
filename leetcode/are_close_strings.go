@@ -94,13 +94,13 @@ func values(m map[byte]int) []int {
 
 func haveSameKeys(m, mm map[byte]int) bool {
 	var ok bool
-	for key, _ := range m {
+	for key := range m {
 		if _, ok = mm[key]; !ok {
 			return false
 		}
 	}
 
-	for key, _ := range mm {
+	for key := range mm {
 		if _, ok = m[key]; !ok {
 			return false
 		}
