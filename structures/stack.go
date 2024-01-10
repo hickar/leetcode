@@ -24,14 +24,14 @@ func (s *Stack[T]) Push(items ...T) {
 	}
 }
 
-func (s *Stack[T]) Pop() T {
+func (s *Stack[T]) Pop() (T, bool) {
 	if len(s.items) == 0 {
-		panic("trying to pop out of zero-sized stack")
+		return *new(T), false
 	}
 
 	popItem := s.items[len(s.items)-1]
 	s.items = s.items[:len(s.items)-1]
-	return popItem
+	return popItem, true
 }
 
 func (s *Stack[T]) Peek() T {

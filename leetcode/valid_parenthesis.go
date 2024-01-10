@@ -9,7 +9,11 @@ func AreValidParenthesis(str string) bool {
 		return false
 	}
 
-	stack := structures.NewStack[rune]()
+	var (
+		stack       = structures.NewStack[rune]()
+		ok          bool
+		poppedValue rune
+	)
 
 	for _, c := range str {
 		switch c {
@@ -17,20 +21,20 @@ func AreValidParenthesis(str string) bool {
 			stack.Push(c)
 			continue
 		case '}':
-			poppedValue := stack.Pop()
-			if poppedValue == nil || *poppedValue != '{' {
+			poppedValue, ok = stack.Pop()
+			if !ok || poppedValue != '{' {
 				return false
 			}
 			continue
 		case ']':
-			poppedValue := stack.Pop()
-			if poppedValue == nil || *poppedValue != '[' {
+			poppedValue, ok = stack.Pop()
+			if !ok || poppedValue != '[' {
 				return false
 			}
 			continue
 		case ')':
-			poppedValue := stack.Pop()
-			if poppedValue == nil || *poppedValue != '(' {
+			poppedValue, ok = stack.Pop()
+			if !ok || poppedValue != '(' {
 				return false
 			}
 			continue
