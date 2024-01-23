@@ -38,50 +38,50 @@ Output: "A"
 const rowOffsetBaseline = 2
 
 func convert(s string, numRows int) string {
-  if len(s) == 1 || numRows == 1 {
-    return s
-  }
+	if len(s) == 1 || numRows == 1 {
+		return s
+	}
 
-  var (
-    oddRowOffset = rowOffsetBaseline + rowOffsetBaseline * (numRows - rowOffsetBaseline)
-    evenRowOffset = 0
-    offset int
-    sb strings.Builder
-  )
+	var (
+		oddRowOffset  = rowOffsetBaseline + rowOffsetBaseline*(numRows-rowOffsetBaseline)
+		evenRowOffset = 0
+		offset        int
+		sb            strings.Builder
+	)
 
-  for i := 0; i < numRows; i++ {
-    offset = i
-    for j := 0; ; j++ {
-      switch {
-      case j == 0:
-        break
-      case i == 0 || i == numRows-1:
-        offset += max(evenRowOffset, oddRowOffset)
-      case j % 2 == 0:
-        offset += evenRowOffset
-      case j % 2 == 1:
-        offset += oddRowOffset
-      }
-        
-      if offset >= len(s) {
-        break
-      }
+	for i := 0; i < numRows; i++ {
+		offset = i
+		for j := 0; ; j++ {
+			switch {
+			case j == 0:
+				break
+			case i == 0 || i == numRows-1:
+				offset += max(evenRowOffset, oddRowOffset)
+			case j%2 == 0:
+				offset += evenRowOffset
+			case j%2 == 1:
+				offset += oddRowOffset
+			}
 
-      sb.WriteByte(s[offset])
-    }
+			if offset >= len(s) {
+				break
+			}
 
-    oddRowOffset -= rowOffsetBaseline
-    evenRowOffset += rowOffsetBaseline
-  }
+			sb.WriteByte(s[offset])
+		}
 
-  return sb.String()
+		oddRowOffset -= rowOffsetBaseline
+		evenRowOffset += rowOffsetBaseline
+	}
+
+	return sb.String()
 }
 
 /* 2 rows (+2 step, 1 gap)
 A C
 B D
 
-/* 3 rows (+4 step, 2 gap) 
+/* 3 rows (+4 step, 2 gap)
 A   F
 B D
 C
@@ -91,7 +91,7 @@ C
 A   G
 B  F
 C E
-D 
+D
 
 
 5 (+8 step, 4 gap)
@@ -106,7 +106,7 @@ A      K
 B     J
 C    I
 D   H
-E G 
+E G
 F
 
 7 (+12 step, 6 gap)

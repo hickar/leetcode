@@ -26,46 +26,46 @@ package leetcode
  * }
  */
 func oddEvenList(head *ListNode) *ListNode {
-  var (
-    cur = head
-    next *ListNode
-    headOdd *ListNode
-    headEven *ListNode
-    curOdd *ListNode
-    curEven *ListNode
-  )
+	var (
+		cur      = head
+		next     *ListNode
+		headOdd  *ListNode
+		headEven *ListNode
+		curOdd   *ListNode
+		curEven  *ListNode
+	)
 
-  for i := 1; ; i++ {
-    if cur == nil {
-      break
-    }
-    next = cur.Next
-    cur.Next = nil
+	for i := 1; ; i++ {
+		if cur == nil {
+			break
+		}
+		next = cur.Next
+		cur.Next = nil
 
-    switch {
-    case i % 2 == 0 && curEven != nil:
-      curEven.Next = cur
-      curEven = curEven.Next
+		switch {
+		case i%2 == 0 && curEven != nil:
+			curEven.Next = cur
+			curEven = curEven.Next
 
-    case i % 2 == 0 && curEven == nil:
-      headEven = cur
-      curEven = headEven
-      
-    case i % 2 == 1 && curOdd != nil:
-      curOdd.Next = cur
-      curOdd = curOdd.Next
+		case i%2 == 0 && curEven == nil:
+			headEven = cur
+			curEven = headEven
 
-    case i % 2 == 1 && curOdd == nil:
-      headOdd = cur
-      curOdd = headOdd
-    }
+		case i%2 == 1 && curOdd != nil:
+			curOdd.Next = cur
+			curOdd = curOdd.Next
 
-    cur = next
-  }
+		case i%2 == 1 && curOdd == nil:
+			headOdd = cur
+			curOdd = headOdd
+		}
 
-  if curOdd != nil {
-    curOdd.Next = headEven
-  }
+		cur = next
+	}
 
-  return head
+	if curOdd != nil {
+		curOdd.Next = headEven
+	}
+
+	return head
 }

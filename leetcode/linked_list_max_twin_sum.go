@@ -42,20 +42,20 @@ There is only one node with a twin in the linked list having twin sum of 1 + 100
  * }
  */
 func pairSum(head *ListNode) int {
-  var (
-    items []int
-    cur = head
-  )
+	var (
+		items []int
+		cur   = head
+	)
 
-  for cur != nil {
-    items = append(items, cur.Val)
-    cur = cur.Next
-  }
+	for cur != nil {
+		items = append(items, cur.Val)
+		cur = cur.Next
+	}
 
-  var maxTwinSum int
-  for i := 0; i < len(items)/2; i++ {
-    maxTwinSum = max(maxTwinSum, items[i]+items[len(items)-i-1])
-  }
+	var maxTwinSum int
+	for i := 0; i < len(items)/2; i++ {
+		maxTwinSum = max(maxTwinSum, items[i]+items[len(items)-i-1])
+	}
 
-  return maxTwinSum
+	return maxTwinSum
 }

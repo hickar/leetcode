@@ -27,23 +27,23 @@ Output: []
  * }
  */
 func reverseList(head *ListNode) *ListNode {
-  if head == nil || head.Next == nil {
-    return head
-  }
+	if head == nil || head.Next == nil {
+		return head
+	}
 
-  var (
-    cur = head
-    prev *ListNode
-    next *ListNode
-  )
+	var (
+		cur  = head
+		prev *ListNode
+		next *ListNode
+	)
 
-  for cur != nil {
-    next = cur.Next
-    cur.Next = prev
-    prev = cur
+	for cur != nil {
+		next = cur.Next
+		cur.Next = prev
+		prev = cur
 
-    cur = next
-  }
+		cur = next
+	}
 
-  return prev
+	return prev
 }
