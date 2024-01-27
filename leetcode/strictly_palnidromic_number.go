@@ -23,6 +23,11 @@ Explanation: We only consider base 2: 4 = 100 (base 2), which is not palindromic
 Therefore, we return false.
 */
 
+// LOL
+func isStrictlyPalindromicV2(n int) bool {
+	return false
+}
+
 func isStrictlyPalindromic(n int) bool {
 	for i := 2; i < 10; i++ {
 		if !isPalindrome(toUnitsBase(n, i)) {
