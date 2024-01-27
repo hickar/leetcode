@@ -1,6 +1,9 @@
 package leetcode
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 /*
 274. H-Index
@@ -29,6 +32,7 @@ func findHIndex(citations []int) int {
 	citationsList := numArray(citations)
 	sort.Sort(citationsList)
 
+	fmt.Println("ass")
 	hIndex := 0
 	for i, paperCitationsCount := range citationsList {
 		if hIndex >= len(citations)-i {
