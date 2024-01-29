@@ -1,43 +1,59 @@
 package leetcode
 
-// Given a string "s", find the length of the longest substring without repeating characters.
+/*
+3. Longest Substring Without Repeating Characters (Medium)
+Given a string s, find the length of the longest substring
+without repeating characters.
 
-func LengthOfLongestSubstring(s string) int {
-	charMap := make(map[string]bool)
-	curLen := 0
-	maxLen := 0
 
-	for _, char := range s {
-		if _, ok := charMap[string(char)]; !ok {
-			charMap[string(char)] = true
-			curLen++
-			if curLen > maxLen {
-				maxLen = curLen
-			}
-		} else {
-			repeatCount := 0
-			for key := range charMap {
-				delete(charMap, key)
+Example 1:
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
 
-				if key != string(char) {
-					if repeatCount == 0 {
-						curLen--
-					}
-				} else {
-					if repeatCount == 1 {
-						break
-					} else {
-						// curLen--
-						repeatCount++
-					}
-				}
+Example 2:
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+
+Example 3:
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+*/
+
+func lengthOfLongestSubstring(s string) int {
+	if len(s) <= 1 {
+		return len(s)
+	}
+
+	var (
+		letters         = make(map[byte]int)
+		l, r, k, maxLen int
+		c               byte
+		ok              bool
+	)
+
+	for r < len(s) {
+		c = s[r]
+
+		if k, ok = letters[c]; ok {
+			delete(letters, c)
+
+			for l <= k {
+				l++
 			}
 		}
+
+		letters[c] = r
+
+		maxLen = max(
+			maxLen,
+			r-l+1,
+		)
+		r++
 	}
 
-	if curLen > maxLen {
-		maxLen = curLen
-	}
-
-	return len(charMap)
+	return maxLen
 }
