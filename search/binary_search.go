@@ -9,7 +9,7 @@ func binSearch(arr []int, item, low, high int) int {
 		return -1
 	}
 
-	mid := low + (high-low)/2
+	mid := (low + high) / 2
 
 	switch {
 	case item > arr[mid]:
